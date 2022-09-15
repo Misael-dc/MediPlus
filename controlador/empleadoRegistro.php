@@ -2,7 +2,6 @@
 include_once("../modelo/Cargo.php");
 
 
-
 if(isset($_POST['registrarEmpleado'])){
     
     $cedula = $_POST['cedula'];
