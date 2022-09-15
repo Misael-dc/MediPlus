@@ -6,7 +6,7 @@ include("../vista/components/header.php");
     <h1>Registro de Empleados</h1>
   </div>
   <div class="card-body">
-      <form method="POST" class="forms-sample"style="margin:0,0 auto">
+      <form method="POST" class="forms-sample" style="margin:0,0 auto">
     
           <div class="form-group">
             <label class="  control-label">CARGO:</label>

@@ -40,8 +40,9 @@ class Empleado{
         include("conexion.php");
         $db=new Conexion();
         $sql = $db->query("SELECT e.id_empleado, e.ci, concat(e.nombre, ' ', e.paterno,' ', e.materno) nombreC, 
-                            c.cargo, e.direccion, e.telefono, e.fechanacimiento, e.genero FROM empleados e
-        INNER JOIN cargos c ON e.id_cargo = c.id_cargo;");
+                            c.cargo, e.direccion, e.telefono, e.fechanacimiento, e.genero, e.aficiones FROM empleados e
+                            INNER JOIN cargos c ON e.id_cargo = c.id_cargo
+                            WHERE e.estado = true");
         return($sql);
     }
 
@@ -58,8 +59,8 @@ class Empleado{
     public function eliminarEmpleado(){
 		include_once ("conexion.php");
 		$db = new Conexion();
-		$sql = $db->query("DELETE FROM empleados 
-                Where id_empleado = '$this->id' ");
+		$sql = $db->query("UPDATE empleados SET estado = false
+                            WHERE id_empleado = '$this->id' ");
 		return $sql;
 	}
 

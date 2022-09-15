@@ -16,6 +16,7 @@ include("../vista/components/header.php");
                 <th> FECHA DE NACIMIENTO </th>
                 <th> GENERO </th>
                 <th> CARGO </th>
+                <th> AFICIONES </th>
                 <th> ACCCIONES </th>
             </tr>
         </thead>
@@ -31,10 +32,11 @@ include("../vista/components/header.php");
                 echo " <td>" . $fila['fechanacimiento'] . "</td>";
                 echo " <td>" . $fila['genero'] . "</td>";
                 echo " <td>" . $fila['cargo'] . "</td>";
+                echo " <td>" . $fila['aficiones'] . "</td>";
             ?>
             <td class="text-center">   
                 <a href="modificarEmpleado.php?id=<?= $fila['id_empleado'] ?>" class="btn btn-sm btn-outline-warning"><i class="fa fa-pencil-square" aria-hidden="true">EDITAR </i> </a>
-                <a onclick="return confirm('Desea eliminar este registro?');" href="eliminarempleado.php?id=<?= $fila['id_empleado'] ?>" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"> ELIMINAR</i> </a>
+                <a onclick="return confirm('Desea eliminar este registro?');" href="empleadoElimina.php?id=<?= $fila['id_empleado'] ?>" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"> ELIMINAR</i> </a>
             </td>
             <?php
                 echo "</tr>";

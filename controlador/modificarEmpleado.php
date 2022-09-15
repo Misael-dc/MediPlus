@@ -1,33 +1,49 @@
 <?php
-    $id=$_GET['id'];
+    $id = $_GET['id'];
 
-    include("../modelo/cargoClase.php");
-    $cargo= new Cargo("", "");
-    $ca=$cargo->listarCargo();
+    include("../modelo/Cargo.php");
+    $cargo = new Cargo("", "");
+    $sql = $cargo->listarCargo();
 
-    include("../modelo/empleadoClase.php");
-        $emp=new Empleado($id, "", "", "", "", "", "", "", "", "", "", "");     
-        $co=$emp->buscarID($id);
-        $r=mysqli_fetch_array($co);
+    include("../modelo/Empleado.php");
+    $emp=new Empleado($id, "", "", "", "", "", "", "", "", "", "", "");     
+    $co=$emp->buscarID($id);
+    $r=mysqli_fetch_array($co);
+
+    $aficionesArr = array('Lectura' => false, 'Negocios' => false, 'Deportes' => false, 'Videojuegos' => false );
+                
+    foreach($aficionesArr as $key => $value){
+        if (strpos($r['aficiones'], $key) !== false) {
+            $aficionesArr[$key] = true;
+        }
+    }
     
     include("../vista/empleadoModificar.php");
 
     if(isset($_POST['modificarEmpleado'])){
 
+        $id = $_POST['idEmpleado'];
+        $cedula = $_POST['cedula'];
+        $nombre = $_POST['nombre'];
+        $paterno = $_POST['paterno'];
+        $materno = $_POST['materno'];
+        $idCargo = $_POST['idCargo'];
+        $direccion = $_POST['direccion'];
+        $telefono = $_POST['telefono'];
+        $fechanac = $_POST['fechanac'];
+        $genero = $_POST['genero'];
+        $aficiones = "";
+        
+        foreach($_POST['aficiones'] as $key => $value){
+            if ($key == (count($_POST['aficiones']) - 1)) {
+                $aficiones .= $value;
+            }else{
+                $aficiones = $aficiones.$value.', ';
+            }
+        }
 
-        $ced = $_POST['cedula'];
-        $nom = $_POST['nombre'];
-        $pat = $_POST['paterno'];
-        $mat = $_POST['materno'];
-        $c = $_POST['cargo'];
-        $d = $_POST['direccion'];
-        $t = $_POST['telefono'];
-        $f = $_POST['fechanac'];
-        $g = $_POST['genero'];
-        $es="Activo";
-        $af = " ";
-    
-        $emp=new Empleado($id, $ced, $nom, $pat, $mat, $c, $d, $t, $f, $g, $es, $af);
+        $emp = new Empleado($id, $cedula, $nombre, $paterno, $materno, $idCargo, $direccion, 
+                            $telefono, $fechanac, $genero, $aficiones);
         
         $res=$emp->modificarEmpleado();
         
@@ -37,9 +53,7 @@
                 alert("Se modifico correctamente")
                 location.href="../controlador/empleadoLista.php";
             </script>
-            <?php
-        
-            
+            <?php         
         }else{
             ?>
             <script type="text/javascript">
