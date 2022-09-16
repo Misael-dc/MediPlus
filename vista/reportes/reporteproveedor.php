@@ -1,6 +1,6 @@
 <?php
-	include '../componentes/fpdf/fpdf.php';
-	require '../conexion.php';
+	include 'fpdf/fpdf.php';
+	require '../../modelo/Proveedor.php';
 	
 class PDF extends FPDF
 {
@@ -8,7 +8,7 @@ class PDF extends FPDF
 	function Header()
 	{
 		// Logo
-		$this->Image('../imagenes/logoRep.png',10,8,45);
+		$this->Image('../../images/logoRep.png',10,8,35);
 		// Arial bold 15
 		$this->SetFont('Arial','',15);
 		// Movernos a la derecha
@@ -50,15 +50,13 @@ $pdf->SetTextColor(255,255,255);
 $pdf->Cell(10);
 $pdf->Cell(35,14,'Empresa',1,0,'C',1);
 $pdf->Cell(40,14,'Correo',1,0,'C',1);
+$pdf->Cell(40,14,'Contacto',1,0,'C',1);
 $pdf->Cell(35,14,'Telefono',1,0,'C',1);
-$pdf->Cell(35,14,'Direccion',1,0,'C',1);
-$pdf->Cell(30,14,'Logo',1,1,'C',1);
+$pdf->Cell(35,14,'Direccion',1,1,'C',1);
 
 
-$query = "SELECT * 
-        FROM proveedor
-        WHERE estado = true";
-$resultado = $conection->query($query);
+$proveedor = new Proveedor("","","","","","");
+$resultado = $proveedor->listar("");
 
 $pdf->SetFillColor(241,244,244);
 $pdf->SetFont('Arial','',12);
@@ -69,9 +67,9 @@ while($row = $resultado->fetch_assoc())
 	$pdf->Cell(10); 
 	$pdf->Cell(35,20,utf8_decode($row['empresa']),1,0,'C',1);	
 	$pdf->Cell(40,20,utf8_decode($row['mail']),1,0,'C',1);	
+	$pdf->Cell(40,20,utf8_decode($row['contacto']),1,0,'C',1);	
 	$pdf->Cell(35,20,utf8_decode($row['telefono']),1,0,'C',1);	
-	$pdf->Cell(35,20,utf8_decode($row['direccion']),1,0,'C',1);	
-	$pdf->Cell(30,0, $pdf->Image($row['logo'],null, null,30, 20) ,1, 1,'C',5);	
+	$pdf->Cell(35,20,utf8_decode($row['direccion']),1, 1,'C',1);	
 }
 $pdf->Output();
 
