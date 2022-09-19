@@ -1,4 +1,3 @@
-
 <?php
 	include '../componentes/fpdf/fpdf.php';
 	require '../conexion.php';
@@ -9,13 +8,13 @@ class PDF extends FPDF
 	function Header()
 	{
 		// Logo
-		$this->Image('../imagenes/logoRep.png',10,8,45);
+		$this->Image('../imagenes/watson-logo.png',10,8,45);
 		// Arial bold 15
 		$this->SetFont('Arial','',15);
 		// Movernos a la derecha
 		$this->Cell(70);
 		// Título
-		$this->Cell(50,45,'Reporte Empleados',0,0,'C');
+		$this->Cell(50,45,'Reporte Detalle Venta',0,0,'C');
 		//Colocando fecha al reporte
 		$this->SetFont('Arial','I',15);
 		$this->Cell(0,15,date('d/m/Y'),0,0,'R');
@@ -48,19 +47,16 @@ $pdf->SetFillColor(98,170,254);
 $pdf->SetFont('Arial','B',12);
 $pdf->SetDrawColor(255,255,255);
 $pdf->SetTextColor(255,255,255);
-// $pdf->Cell(55);
-$pdf->Cell(30,14,'Cargo',1,0,'C',1);
-$pdf->Cell(30,14,'CI',1,0,'C',1);
-$pdf->Cell(53,14,'Nombre',1,0,'C',1);
-$pdf->Cell(30,14,'direccion',1,0,'C',1);
-$pdf->Cell(30,14,'telefono',1,0,'C',1);
-$pdf->Cell(20,14,'Genero',1,1,'C',1);
 
-$query = "SELECT e.ci, concat(e.nombre,' ', e.paterno, ' ', e.materno) as nombre_c, e.direccion, e.telefono, e.fechanacimiento, e.genero,
-        c.cargo
-        FROM empleado e 
-        INNER JOIN cargo c ON e.id_cargo = c.id_cargo
-        WHERE e.estado = true";
+$pdf->Cell(24);
+$pdf->Cell(40,14,'Producto',1,0,'C',1);
+$pdf->Cell(35,14,'Cantidad',1,0,'C',1);
+$pdf->Cell(35,14,'Costo Venta',1,0,'C',1);
+$pdf->Cell(40,14,'Fecha',1,1,'C',1);
+
+$query = "SELECT p.nombreproducto, dc.cantidadcompra, dc.costocompra, c.fecha FROM detalle_compra dc 
+        INNER JOIN producto p ON p.id_producto = dc.id_producto
+        INNER JOIN compra c ON dc.id_compra = c.id_compra";
 $resultado = $conection->query($query);
 
 $pdf->SetFillColor(241,244,244);
@@ -69,19 +65,13 @@ $pdf->SetTextColor(0,0,0);
 
 while($row = $resultado->fetch_assoc())
 {
-	// $pdf->Cell(55); 
-	
-	$pdf->Cell(30,10,utf8_decode($row['cargo']),1,0,'C',1);	
-	$pdf->Cell(30,10,utf8_decode($row['ci']),1,0,'C',1);	
-	$pdf->Cell(53,10,utf8_decode($row['nombre_c']),1,0,'C',1);	
-	$pdf->Cell(30,10,utf8_decode($row['direccion']),1,0,'C',1);	
-	$pdf->Cell(30,10,utf8_decode($row['telefono']),1,0,'C',1);	
-	$pdf->Cell(20,10,utf8_decode($row['genero']),1,1,'C',1);	
+	$pdf->Cell(24); 
+	$pdf->Cell(40,10,utf8_decode($row['nombreproducto']),1,0,'C',1);	
+	$pdf->Cell(35,10,utf8_decode($row['cantidadcompra']),1,0,'C',1);	
+	$pdf->Cell(35,10,utf8_decode($row['costocompra']),1,0,'C',1);	
+	$pdf->Cell(40,10,utf8_decode($row['fecha']),1,1,'C',1);	
 }
 $pdf->Output();
 
 
 ?>
-
-
-
