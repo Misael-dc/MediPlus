@@ -64,22 +64,24 @@
                     
             <?php
                 }else{
-                $recepcion = $cliente->listar("");
+                    $fila['id_cliente'] = '';
+                    if (isset($_SESSION['id_cliente'])) {
+                        $recepcion = $cliente->listarClienteUsuario($_SESSION['id_cliente']);
+                        $fila = mysqli_fetch_array($recepcion); 
+                    }
+                    
+                    
             ?>
             </table>
-            <div >
+            <div class="mt-4" >
                 <form action="ventaRealizar.php" method="POST" >
                     <div class="d-flex justify-content-around">
                         <input name="total" type="hidden" value="<?=$total?>">
                         <div class="col-auto">
-                            <label for="" style="display: inline-block;">Cliente:</label>
-                            <select class="form-select" name="idCliente" style="display: inline-block; width: auto;">   
-                            <?php
-                                while($fila = mysqli_fetch_array($recepcion)){
-                                    echo "<option value=".$fila['id_cliente'].">".$fila['razon_social']."</option>";
-                                }
-                            ?>
-                            </select>
+                            <label for="" style="display: inline-block;">Cliente Nit:</label>
+
+                            <input class="form-control" name="idCliente" style="display: inline-block; width: auto;" value="<?=$fila['id_cliente']?>" disabled>   
+                            <input type="hidden" name="idCliente" value="<?=$fila['id_cliente']?>" >   
                         </div>
                         <div class="col-auto">
                             <label for="">Total:</label>

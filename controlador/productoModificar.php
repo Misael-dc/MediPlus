@@ -1,12 +1,14 @@
 <?php
 include_once("../modelo/Producto.php");
 include_once("../modelo/Proveedor.php");
+include_once("../modelo/Verificacion.php");
+$verificar = new Verificacion();
 
 
 $proveedor = new Proveedor("","","","","","","","");
 $listaProveedor = $proveedor->listar("");
 
-$producto = new Producto("","","","","","","","","");
+$producto = new Producto("","","","","","","","","","","","","","","");
 $listaClasificacion = $producto->listaClasificacion();
 
 
@@ -15,10 +17,16 @@ if(isset($_POST['modificar'])){
     $idClasificacion = $_POST['idClasificacion'];
     $idProveedor = $_POST['idProveedor'];
     $nombre = $_POST['nombre'];
+    $forma = $_POST['forma'];
+    $peso =$_POST['peso'].' '.$_POST['pesoS'];
     $descripcion = $_POST['descripcion'];
+    $laboratorio = $_POST['lab'];
     $costoCompra = $_POST['costoCompra'];
     $costoVenta = $_POST['costoVenta'];
     $stock = $_POST['stock'];
+    $fechaVencimiento = $_POST['fechaV'];
+    $unidad = $_POST['unidadV'];
+    $envase = $_POST['envase'];
 
 
     if ($_FILES['imagen']['name'] != null) {
@@ -26,18 +34,17 @@ if(isset($_POST['modificar'])){
         $imagenNombre = $_FILES['imagen']['name'];
         $tmpImagen = $_FILES['imagen']['tmp_name'];
         
-        $producto = new Producto($id, $idClasificacion, $idProveedor, $nombre, $descripcion, $costoCompra, $costoVenta, $stock, $imagenNombre);
+        $producto = new Producto($id, $idClasificacion, $idProveedor, $nombre,$forma, $peso,$descripcion, $laboratorio, $costoCompra, $costoVenta, $stock, $fechaVencimietno, $unidad, $envase, $imagenNombre);
         $res = $producto->modificar();
+        move_uploaded_file($tmpImagen, $ruta.$imagenNombre);
     }else{
-        echo "
-        <script type='text/javascript'>
-            alert('Llene todos los campos...');    
-        </script>";
+        $producto = new Producto($id, $idClasificacion, $idProveedor, $nombre,$forma, $peso,$descripcion, $laboratorio, $costoCompra, $costoVenta, $stock, $fechaVencimietno, $unidad, $envase, "");
+        $res = $producto->modificar();
+        var_dump($imagenNombre);
     }
 
    
     if($res){
-        move_uploaded_file($tmpImagen, $ruta.$imagenNombre);
         ?>
         <script type="text/javascript">
             alert("Modificado...");

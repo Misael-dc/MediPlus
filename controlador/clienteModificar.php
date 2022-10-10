@@ -1,13 +1,14 @@
 <?php
 include_once("../modelo/Cliente.php");
-
+include_once("../modelo/Verificacion.php");
+$verificar = new Verificacion();
 
 if (isset($_POST['modificar'])) {
     $id = $_POST['id'];
     $razon = $_POST['razon'];
     $nit = $_POST['nit'];
 
-    $cliente = new Cliente($id, $razon, $nit);
+    $cliente = new Cliente($id, $razon, $nit,"","","");
     $respuesta = $cliente->modificar();
     if ($respuesta) {
         echo "<script>  
@@ -21,7 +22,7 @@ if (isset($_POST['modificar'])) {
     }
 }else{
     $id = $_GET['id'];
-    $cliente = new Cliente($id, "", "");
+    $cliente = new Cliente($id, $razon, $nit,"","","");
     $resultado = $cliente->obtenerCliente();
     $datos = mysqli_fetch_array($resultado);
 }

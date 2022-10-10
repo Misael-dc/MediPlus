@@ -33,6 +33,9 @@
                 
             ?>
             <div class="card border-secondary mb-3 mx-2" style="max-width: 18rem; min-width: 12rem;">
+                <div class="card-header d-flex justify-content-center">
+                    <img src="../imagenes_subidas/<?=$reg['imagenProducto']?>" alt="" height="100px">
+                </div>
                 <div class="card-header"><?php echo $reg['nombre_producto'] ?></div>
                 <div class="card-body text-secondary">
                     <h5 class="card-text">Stock Actual: <span class="badge rounded-pill bg-info text-dark"><?php echo $reg['stock'] ?></span></h5>
@@ -46,7 +49,10 @@
                         <p>               
                             <input type="hidden" name="costoventa" value="<?=$reg['costo_venta']?>">
                             <input type="hidden" name="id" value="<?=$reg['id_producto']?>">
-                            <?= $button?>
+                            <div class="mt-2">
+                                <?= $button?>
+                            </div>
+                            
                         </p>
                     </form> 
                 </div>

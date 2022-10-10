@@ -1,9 +1,11 @@
 <?php
 include_once("../modelo/Cliente.php");
-$cliente = new Cliente("","","");
+include_once("../modelo/Verificacion.php");
+$verificar = new Verificacion();
+$cliente = new Cliente("","","","","","","");
 
 if(isset($_POST['eliminar'])){
-    $cliente = new Cliente($_POST['id'],"","");
+    $cliente = new Cliente($_POST['id'],"","","","","","");
     $respuesta = $cliente->eliminar();
     if ($respuesta) {
         echo "<script>  

@@ -1,9 +1,12 @@
 
 <?php
 include_once("../modelo/Producto.php");
-$producto = new Producto("","","","","","","","","");
+include_once("../modelo/Verificacion.php");
+$producto = new Producto("","","","","","","","","","","","","","","");
 
-session_start();
+$verificar = new Verificacion();
+
+
 
 if(isset($_POST['eliminar'])){
     $producto->setIdProducto($_POST['id']);

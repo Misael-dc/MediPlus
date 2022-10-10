@@ -1,16 +1,25 @@
 <?php
 require_once('../modelo/conexion.php');
-session_start();
+require_once('../modelo/Verificacion.php');
+
+$verificar = new Verificacion();
+
+$tipoUsuario = $verificar->verificarInicio();
+if ( $tipoUsuario == 'No Inicio') {
+    echo "<script>
+            alert('Necesitas iniciar sesion')
+           location.href='login.php'
+         </script>";
+}
 
 $idEmpleado = 1;
+
 $idCliente = $_POST['idCliente'];
 $fecha = date('Y/m/d');
-var_dump($idEmpleado);
-var_dump($idCliente);
-var_dump($fecha);
 
 $carrito = $_SESSION['carrito'];
 $db = new Conexion();
+
 
 $consultaV = "INSERT INTO venta(id_empleado, id_cliente, fecha) VALUES ('$idEmpleado', '$idCliente', '$fecha')";
 $respuesta = $db->query($consultaV);
@@ -24,7 +33,7 @@ if ($respuesta) {
         $consultaDv = "INSERT INTO detalle_ventas
                         VALUES ((select max(id_venta) from venta), '$idProducto', '$cantidad', '$costo')";
 
-        $respuestaDv = $db->query($consultaDv);
+        $respuestaDv = $db->query($consultaDv); 
 
         $consultaPr = "SELECT stock FROM producto WHERE id_producto = $idProducto";
         $respuestaPr = $db->query($consultaPr);
@@ -37,6 +46,7 @@ if ($respuesta) {
         $respuestaUpr = $db->query($consultaUpr);
 
     }
+    
     if ($respuestaDv) {
  
         unset($_SESSION['carrito']);
@@ -44,7 +54,7 @@ if ($respuesta) {
         
         echo "<script>
                 alert('registrado con exito'); 
-                location.href='ventaListaProducto.php';
+                location.href='ventaListaProducto.php'
             </script>";
     }
 }

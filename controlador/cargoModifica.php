@@ -1,6 +1,8 @@
 <?php
 $cod = $_GET['cod'];
 include("../modelo/Cargo.php");
+include_once("../modelo/Verificacion.php");
+$verificar = new Verificacion();
 
 $cargo = new Cargo($cod, "");
 

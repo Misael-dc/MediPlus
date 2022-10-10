@@ -1,5 +1,7 @@
 <?php
 include_once("../modelo/Cargo.php");
+include_once("../modelo/Verificacion.php");
+$verificar = new Verificacion();
 
 
 if(isset($_POST['registrarEmpleado'])){

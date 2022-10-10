@@ -53,7 +53,7 @@
           <div id="sidebar" class="sidebar sidebar-with-footer">
             <!-- Aplication Brand -->
             <div class="app-brand">
-              <a href="/index.html">
+              <a href="ventaListaProducto.php">
                 <img src="../images/logo.png" alt="Mono">
                 <span class="brand-name">MediPlus+++</span>
               </a>
@@ -80,7 +80,7 @@
                   </li>
                 
                 
-                  <li class="section-title">
+                  <!-- <li class="section-title">
                     Apps
                   </li>
                 
@@ -98,13 +98,19 @@
                       <i class="mdi mdi-phone"></i>
                       <span class="nav-text">Contacts</span>
                     </a>
-                  </li>       
+                  </li>        -->
                 
                 
                   <li class="section-title">
                     UI Elements
                   </li>
-                
+                  <?php 
+                  $inicio = 'No inicio'; 
+                  if ($verificar->verificarInicio() != 'No Inicio') {
+                    $inicio = $verificar->verificarInicio(); 
+                  }
+              
+                  if ($inicio == 'empleado') {?>
                   <li  class="has-sub" >
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#cargo"
                       aria-expanded="false" aria-controls="charts">
@@ -210,6 +216,45 @@
                       </div>
                     </ul>
                   </li>
+                  <?php }?>
+                  <!-- para el cliente  -->
+                  <?php if ($inicio == 'cliente') {?>
+
+                  <li  class="has-sub" >
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#detalle_compra"
+                      aria-expanded="false" aria-controls="charts">
+                      <i class="mdi mdi-chart-pie"></i>
+                      <span class="nav-text">Menu Usuario</span> <b class="caret"></b>
+                    </a>
+                    <ul  class="collapse"  id="detalle_compra" data-parent="#sidebar-menu">
+                      <div class="sub-menu">                        
+                            <li >
+                              <a class="sidenav-item-link" href="ventaListaDetalleVenta.php">
+                                <span class="nav-text">Historial de Compras</span> 
+                              </a>
+                            </li>
+                      </div>
+                    </ul>
+                  </li>
+                  <li  class="has-sub" >
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#producto"
+                      aria-expanded="false" aria-controls="charts">
+                      <i class="mdi mdi-chart-pie"></i>
+                      <span class="nav-text">Producto</span> <b class="caret"></b>
+                    </a>
+                    <ul  class="collapse"  id="producto" data-parent="#sidebar-menu">
+                      <div class="sub-menu">                        
+                            <li >
+                              <a class="sidenav-item-link" href="ventaListaProducto.php">
+                                <span class="nav-text">Lista Producto</span> 
+                              </a>
+                            </li>
+                      </div>
+                    </ul>
+                  </li>
+                  <?php }?>
+
+                  
                 
                 
                   <li class="section-title">
@@ -652,16 +697,20 @@
                     </div>
                   </li> -->
                   <!-- User Account -->
+                  
                   <li class="dropdown user-menu">
+                    <?php if($inicio != 'No inicio') {?>
                     <button class="dropdown-toggle nav-link" data-toggle="dropdown">
                       <img src="../images/user/user-xs-01.jpg" class="user-image rounded-circle" alt="User Image" />
-                      <span class="d-none d-lg-inline-block">John Doe</span>
+                      <span class="d-none d-lg-inline-block">
+                        <?=$_SESSION['usuario']?> 
+                      </span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right">
                       <li>
-                        <a class="dropdown-link-item" href="user-profile.html">
+                        <a class="dropdown-link-item" href="#">
                           <i class="mdi mdi-account-outline"></i>
-                          <span class="nav-text">My Profile</span>
+                          <span class="nav-text"><?=$_SESSION['nombre_completo']?></span>
                         </a>
                       </li>
                       <li>
@@ -684,9 +733,18 @@
                       </li>
 
                       <li class="dropdown-footer">
-                        <a class="dropdown-link-item" href="sign-in.html"> <i class="mdi mdi-logout"></i> Log Out </a>
+                        <a class="dropdown-link-item" href="zCerrarSesion.php"> <i class="mdi mdi-logout"></i> Salir </a>
                       </li>
                     </ul>
+
+                    <?php }else{?>
+                      <div class="d-flex aling-item-center">
+                       <a class="btn btn-primary btn-pill" href="login.php" >Iniciar Sesión</a>
+                      </div>
+                      
+                    <?php }?>
+
+
                   </li>
                 </ul>
               </div>

@@ -1,7 +1,10 @@
 <?php
+include_once("../modelo/Verificacion.php");
+$verificar = new Verificacion();
 include("../vista/cargoRegistro.php");
+
 if(isset($_POST['registrarCargo'])){
-    echo"registrar cargo";
+
     $ni=$_POST['cargo'];
     include("../modelo/Cargo.php");
     $cli=new Cargo("",$ni);

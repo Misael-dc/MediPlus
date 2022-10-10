@@ -1,46 +1,41 @@
 <?php
 class Cliente{
 	private $idCliente;
+	private $nombre;
+	private $paterno;
+	private $materno;
+	private $ciudad;
 	private $nit;
-	private $razonsocial;
 	
-	public function __construct($idCliente, $razon, $nit){
-		$this->setId($idCliente);
-		$this->setRs($razon);
-		$this->setNit($nit);
+	public function __construct($idCliente, $nombre, $paterno, $materno, $ciudad, $nit){
+		$this->idCliente =   $idCliente;
+		$this->nombre    =   $nombre;
+		$this->paterno   =   $paterno;
+		$this->materno   =   $materno;
+		$this->ciudad    =   $ciudad;
+		$this->nit       =   $nit;
 	}
 
-	public function setId($id){
-		$this->idCliente = $id;
-	}
-
-	public function setNit($n){
-		$this->nit=$n;
-	}
-
-	public function setRs($ra){
-		$this->razonsocial=$ra;
-	}
-
-	public function getNit($n){
-		$this->nit=$n;
-	}
-
-	public function getRs($ra){
-		$this->razonsocial=$ra;
-	}
 
 	public function listar($palabra){
 		include_once ("conexion.php");
 		$db = new Conexion();
-		$sql = $db->query("SELECT * FROM clientes WHERE razon_social like '$palabra%' AND estado = true");
+		$sql = $db->query("SELECT * FROM clientes WHERE nombre like '$palabra%' AND estado = true");
+		return $sql;
+	}
+	public function listarClienteUsuario($idCliente){
+		include_once ("conexion.php");
+		$db = new Conexion();
+		$sql = $db->query("SELECT * FROM clientes 
+							WHERE id_cliente = '$idCliente' AND estado = true");
 		return $sql;
 	}
 
 	public function registrar(){
 		include_once ("conexion.php");
 		$db = new Conexion();
-		$sql = $db->query("INSERT INTO clientes(razon_social, nit_ci, estado) VALUES ('$this->razonsocial', '$this->nit', true)");
+		$sql = $db->query("INSERT INTO clientes(nombre, paterno, materno, ciudad, cedula, estado) 
+						VALUES ('$this->nombre', '$this->paterno', '$this->materno', '$this->ciudad', '$this->nit', true)");
 		return $sql;
 	}
 

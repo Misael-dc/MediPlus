@@ -1,10 +1,14 @@
 <?php
 include_once("../modelo/Producto.php");
 include_once("../modelo/Proveedor.php");
+include_once("../modelo/Verificacion.php");
+$verificar = new Verificacion();
+
+
 $proveedor = new Proveedor("","","","","","","","");
 $datosProveedor = $proveedor->listar("");
 
-$producto = new Producto("","","","","","","","","");
+$producto = new Producto("","","","","","","","","","","","","","","");
 $datosClasificacion = $producto->listaClasificacion();
 
 
@@ -13,12 +17,17 @@ if(isset($_POST['registrar'])){
     $idClasificacion = $_POST['idClasificacion'];
     $idProveedor = $_POST['idProveedor'];
     $nombre = $_POST['nombre'];
+    $forma = $_POST['forma'];
+    $peso =$_POST['peso'].' '.$_POST['pesoS'];
     $descripcion = $_POST['descripcion'];
+    $laboratorio = $_POST['lab'];
     $costoCompra = $_POST['costoCompra'];
     $costoVenta = $_POST['costoVenta'];
     $stock = $_POST['stock'];
+    $fechaVencimiento = $_POST['fechaV'];
+    $unidad = $_POST['unidadV'];
+    $envase = $_POST['envase'];
 
-    var_dump($_FILES);
 
 
     if ($_FILES['imagen']['name'] != null) {
@@ -26,7 +35,7 @@ if(isset($_POST['registrar'])){
         $imagenNombre = $_FILES['imagen']['name'];
         $tmpImagen = $_FILES['imagen']['tmp_name'];
         
-        $producto = new Producto("", $idClasificacion, $idProveedor, $nombre, $descripcion, $costoCompra, $costoVenta, $stock, $imagenNombre);
+        $producto = new Producto("", $idClasificacion, $idProveedor, $nombre, $forma, $peso,$descripcion, $laboratorio, $costoCompra, $costoVenta, $stock, $fechaVencimiento, $unidad, $envase, $imagenNombre);
         $res = $producto->registrar();
     }else{
         echo "

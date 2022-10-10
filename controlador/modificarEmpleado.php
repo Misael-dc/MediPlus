@@ -2,6 +2,10 @@
     $id = $_GET['id'];
 
     include("../modelo/Cargo.php");
+    include_once("../modelo/Verificacion.php");
+    $verificar = new Verificacion();
+
+
     $cargo = new Cargo("", "");
     $sql = $cargo->listarCargo();
 

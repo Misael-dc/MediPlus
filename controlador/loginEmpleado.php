@@ -12,8 +12,8 @@ if ( $tipoUsuario == 'cliente' || $tipoUsuario == 'empleado') {
 
 
 if (isset($_POST["iniciarSesion"])) {
-    include_once("../modelo/LoginCliente.php");
-    $login = new LoginCliente();
+    include_once("../modelo/LoginEmpleado.php");
+    $login = new LoginEmpleado();
     $correo = $_POST['correo'];
     $password = $_POST['password'];
     $vcorreo = $login->verificarUsuario($correo);
@@ -25,14 +25,15 @@ if (isset($_POST["iniciarSesion"])) {
         $datos = $login->obtenerDatos($correo, $password);
         $datosUsuario = mysqli_fetch_array($datos);
         $_SESSION['id_usuario'] = $datosUsuario['id_usuario'];
-        $_SESSION['id_cliente'] = $datosUsuario['id_cliente'];
+        $_SESSION['id_empleado'] = $datosUsuario['id_empleado'];
         $_SESSION['usuario'] = $datosUsuario['usuario'];
         $_SESSION['nombre_completo'] = $datosUsuario['nombre_completo'];
-        $_SESSION['tipo_usuario'] = 'cliente';
+        $_SESSION['id_cargo'] = $datosUsuario['id_cargo'];
+        $_SESSION['tipo_usuario'] = 'empleado';
 
 
         echo "<script>
-            location.href='ventaListaProducto.php'
+            //location.href='ventaListaProducto.php'
             </script>";
     }else {
         echo "<script> 
@@ -41,4 +42,4 @@ if (isset($_POST["iniciarSesion"])) {
     }
 
 }
-include_once("../vista/login.php");
+include_once("../vista/loginEmpleado.php");

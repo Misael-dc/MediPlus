@@ -2,12 +2,14 @@
 <?php
 include_once("../modelo/Producto.php");
 include_once("../modelo/Cliente.php");
-$producto = new Producto("","","","","","","","","");
+include_once("../modelo/Verificacion.php");
+$verificar = new Verificacion();
 
-$cliente = new Cliente("","","");
+$producto = new Producto("","","","","","","","","","","","","","","");
 
-session_start();
+$cliente = new Cliente("","","","","","");
 
+$tipoUsuario = $verificar->verificarInicio();
 
 
 

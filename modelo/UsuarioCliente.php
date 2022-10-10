@@ -2,22 +2,25 @@
 class UsuarioCliente{
 
     private $idUsuario;
+    private $idCliente;
     private $mail;
     private $usuario;
     private $pasword;
     private $nivel;
 
-
-	public function __construct($idUsuario, $mail, $us, $pas, $niv){
+	public function __construct($idUsuario, $usuario, $mail, $pas){
         $this->setIdUsuario($idUsuario);
+        // $this->setIdCliente($idCliente);
         $this->setMail($mail);
-        $this->setUsuario($us);
+        $this->setUsuario($usuario);
         $this->setPasword($pas);
-        $this->setNivel($niv);
 	}
 
 	public function setIdUsuario($idUsuario){
 		$this->idUsuario = $idUsuario;
+    }
+	public function setIdCliente($idCliente){
+		$this->idCliente = $idCliente;
     }
 	public function setMail($mail){
 		$this->mail = $mail;
@@ -54,8 +57,9 @@ class UsuarioCliente{
     public function registrar(){
 		include_once ("conexion.php");
 		$db = new Conexion();
-		$sql = $db->query("INSERT INTO usuarios(id_empleado, usuario, pasword, nivel, estado) 
-                    VALUES ('$this->idEmp', '$this->usuario', '$this->pasword', '$this->nivel', 'activo' )");
+		$contra = md5($this->pasword);
+		$sql = $db->query("INSERT INTO usuarios_clientes(id_cliente, usuario, mail, password, estado) 
+                    VALUES ((select max(id_cliente) from clientes), '$this->usuario','$this->mail', '$contra', true )");
 		return $sql;
 	}
 
@@ -80,7 +84,6 @@ class UsuarioCliente{
 		$sql = $db->query("UPDATE usuarios SET pasword = '$this->pasword' WHERE id_usuario = $this->idUsuario");
 		return $sql;
 	}
-
 
 }
 ?>

@@ -1,6 +1,8 @@
 <?php
 include_once("../modelo/Producto.php");
-$producto = new Producto("","","","","","","","","");
+include_once("../modelo/Verificacion.php");
+$verificar = new Verificacion();
+$producto = new Producto("","","","","","","","","","","","","","","");
 
 if(isset($_POST['eliminar'])){
     $producto->setIdProducto($_POST['id']);

@@ -4,22 +4,34 @@ class Producto{
 	private $idClasificacion;
 	private $idProveedor;
 	private $nombre;
+    private $forma;
+    private $peso;
 	private $descripcion;
+    private $laboratorio;
 	private $costoCompra;
 	private $costoVenta;
 	private $stock;
+    private $fechaven;
+    private $unidad;
+    private $envase;
     private $imagenProducto;
 	
-	public function __construct($idProducto, $idClasificacion, $idProveedor, $nombre, $descripcion, $costoCompra, $costoVenta, $stock, $imagenProducto){
-		 $this->idProducto = $idProducto;
-		 $this->idProveedor = $idProveedor;
-		 $this->idClasificacion = $idClasificacion;
-         $this->nombre = $nombre;
-         $this->descripcion= $descripcion;
-         $this->costoCompra = $costoCompra; 
-         $this->costoVenta = $costoVenta;
-         $this->stock = $stock;
-         $this->imagenProducto = $imagenProducto;
+	public function __construct($idProducto, $idClasificacion, $idProveedor, $nombre, $forma, $peso, $descripcion, $lab, $costoCompra, $costoVenta, $stock, $fechaVen, $uni, $env, $imagenProducto){
+        $this->idProducto = $idProducto;
+        $this->idProveedor = $idProveedor;
+        $this->idClasificacion = $idClasificacion;
+        $this->nombre = $nombre;
+        $this->forma = $forma;
+        $this->peso = $peso;
+        $this->descripcion = $descripcion;
+        $this->laboratorio = $lab;
+        $this->costoCompra = $costoCompra; 
+        $this->costoVenta = $costoVenta;
+        $this->stock = $stock;
+        $this->fechaven = $fechaVen;
+        $this->unidad = $uni;
+        $this->envase = $env;
+        $this->imagenProducto = $imagenProducto;
 	}
 
 	
@@ -45,8 +57,14 @@ class Producto{
 	public function registrar(){
 		include_once ("conexion.php");
 		$db = new Conexion();
-		$sql = $db->query("INSERT INTO producto(id_clasificacion, id_proveedor, nombre_producto, descripcion, costo_compra, costo_venta, stock, imagenProducto, estado) 
-                            VALUES ('$this->idClasificacion', '$this->idProveedor', '$this->nombre', '$this->descripcion', '$this->costoCompra', '$this->costoVenta', '$this->stock', '$this->imagenProducto', true)");
+		$sql = $db->query("INSERT INTO producto(id_clasificacion, id_proveedor, nombre_producto, 
+                                        forma, peso, descripcion, laboratotio, costo_compra, costo_venta, 
+                                        stock, fecha_vencimiento, unidad_venta, envase, imagenProducto, estado) 
+                             VALUES ('$this->idClasificacion', '$this->idProveedor', '$this->nombre',  
+                                        '$this->forma', '$this->peso', '$this->descripcion', 
+                                        '$this->laboratorio', '$this->costoCompra', '$this->costoVenta', 
+                                        '$this->stock', '$this->fechaven', '$this->unidad', '$this->envase', 
+                                        '$this->imagenProducto', true)");
 		return $sql;
 	}
 
@@ -68,10 +86,19 @@ class Producto{
     public function modificar(){
         include_once ("conexion.php");
         $db = new Conexion();
-        $sql = $db->query("UPDATE producto SET id_clasificacion = '$this->idClasificacion', id_proveedor = '$this->idProveedor', nombre_producto='$this->nombre', 
-                                descripcion = '$this->descripcion', costo_compra = '$this->costoCompra', costo_venta = '$this->costoVenta', 
-                                stock = '$this->stock', imagenProducto = '$this->imagenProducto'
+        if ( $this->imagenProducto != "" ) {
+            $sql = $db->query("UPDATE producto SET id_clasificacion = '$this->idClasificacion', id_proveedor = '$this->idProveedor', nombre_producto='$this->nombre', 
+                                forma='$this->forma', peso='$this->peso', descripcion = '$this->descripcion', 
+                                laboratorio='$this->laboratorio', costo_compra = '$this->costoCompra', costo_venta = '$this->costoVenta', stock = '$this->stock', 
+                                fecha_vencimiento = '$this->fechaven', unidad_venta ='$this->unidad', envase='$this->envase' , imagenProducto = '$this->imagenProducto'
                                 WHERE id_producto ='$this->idProducto'");
+        }else{
+            $sql = $db->query("UPDATE producto SET id_clasificacion = '$this->idClasificacion', id_proveedor = '$this->idProveedor', nombre_producto='$this->nombre', 
+                                forma='$this->forma', peso='$this->peso', descripcion = '$this->descripcion', 
+                                laboratorio='$this->laboratorio', costo_compra = '$this->costoCompra', costo_venta = '$this->costoVenta', stock = '$this->stock', 
+                                fecha_vencimiento = '$this->fechaven', unidad_venta ='$this->unidad', envase='$this->envase'
+                                WHERE id_producto ='$this->idProducto'");
+        }
         return $sql;
 	}
    

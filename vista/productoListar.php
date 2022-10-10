@@ -9,16 +9,21 @@
   </div>
   <div class="card-body">   
     <table id="productsTable" class="table table-hover table-product" style="width:100%">
-        <thead>
+      <thead>
         <tr>
           <th> Id </th>
           <th> Clasificación </th>
           <td> PROVEEDOR </td>
           <th> Nombre </th>
+          <th> Forma</th>
+          <th> Peso</th>
           <th> Descripción </th>
+          <th> Laboratorio</th>
           <th> Costo Compra </th>
           <th> Costo Venta </th>
           <th> Stock </th>
+          <th> Vencimiento</th>
+          <th> Precio Venta</th>
           <th> Imagen </th>
           <th> ACCIONES </th>
         </tr>
@@ -30,10 +35,15 @@
           <td><?=$datos['nombre']?></td>
           <td><?=$datos['empresa']?></td>
           <td><?=$datos['nombre_producto']?></td>
+          <td><?=$datos['forma']?></td>
+          <td><?=$datos['peso']?></td>
           <td><?=$datos['descripcion']?></td>
+          <td><?=$datos['laboratorio']?></td>
           <td><?=$datos['costo_compra']?></td>
           <td><?=$datos['costo_venta']?></td>
           <td><?=$datos['stock']?></td>
+          <td><?=$datos['fecha_vencimiento']?></td>
+          <td><?=$datos['unidad_venta']?></td>
           <td> <img src="../imagenes_subidas/<?=$datos['imagenProducto']?>" alt="imagen" height="50px"></td>
           <td style="display: flex; justify-content: center;">
             <a type="button" class="btn btn-sm btn-outline-warning" href="productoModificar.php?id=<?=$datos['id_producto']?>"> 

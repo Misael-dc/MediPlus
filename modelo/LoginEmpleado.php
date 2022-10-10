@@ -1,5 +1,5 @@
 <?php
-class LoginCliente{
+class LoginEmpleado{
 
     private $idUsuario;
     private $pasword;
@@ -12,7 +12,7 @@ class LoginCliente{
     public function verificarUsuario($mail){
 		include_once ("conexion.php");
 		$db = new Conexion();
-		$sql = $db->query("SELECT * FROM usuarios_clientes WHERE mail = '$mail'");
+		$sql = $db->query("SELECT * FROM usuarios_empleados WHERE mail = '$mail'");
 		return $sql;
 	}
 
@@ -20,7 +20,7 @@ class LoginCliente{
 		include_once ("conexion.php");
 		$db = new Conexion();
         $password = md5($password);
-		$sql = $db->query("SELECT * FROM usuarios_clientes WHERE password = '$password'");
+		$sql = $db->query("SELECT * FROM usuarios_empleados WHERE password = '$password'");
 		return $sql;
 	}
 
@@ -28,9 +28,9 @@ class LoginCliente{
 		include_once ("conexion.php");
 		$db = new Conexion();
         $password = md5($password);
-		$sql = $db->query("SELECT uc.id_usuario, uc.id_cliente, uc.mail, uc.usuario, CONCAT(c.nombre, ' ', ' ', c.paterno, ' ',c.materno) as nombre_completo FROM usuarios_clientes uc
-							INNER JOIN clientes c
-							ON uc.id_cliente = c.id_cliente
+		$sql = $db->query("SELECT ue.id_usuario, ue.id_empleado, ue.mail, ue.usuario, CONCAT(e.nombre, ' ', ' ', e.paterno, ' ',e.materno) as nombre_completo FROM usuarios_empleados ue
+							INNER JOIN empleados e
+							ON ue.id_empleado = e.id_empleado
 							WHERE  mail = '$mail' AND password = '$password'");
 		return $sql;
 	}

@@ -1,6 +1,7 @@
 <?php
-include("../vista/proveedorRegistro.php");
-    if(isset($_POST['registrarProveedor'])){
+include_once("../modelo/Verificacion.php");
+$verificar = new Verificacion();
+if(isset($_POST['registrarProveedor'])){
     
         $emp = $_POST['empresa'];
         $cont = $_POST['contacto'];
@@ -16,19 +17,20 @@ include("../vista/proveedorRegistro.php");
             ?>
             <script type="text/javascript">
                 alert("Se registro correctamente")
-            </script>
+                </script>
             <?php
             
         }else{
             ?>
             <script type="text/javascript">
                 alert("No Se Registro")
-            </script>
+                </script>
             <?php
         }
     }
-
-
+    
+    
+include("../vista/proveedorRegistro.php");
 
 
 ?>

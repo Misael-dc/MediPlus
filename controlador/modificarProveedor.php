@@ -1,9 +1,12 @@
 <?php
     $id=$_GET['id'];
     include("../modelo/proveedorClase.php");
-        $prov=new Proveedor($id, "", "", "", "", "");     
-        $co=$prov->buscarID($id);
-        $r=mysqli_fetch_array($co);
+    include_once("../modelo/Verificacion.php");
+    $verificar = new Verificacion();
+    
+    $prov=new Proveedor($id, "", "", "", "", "");     
+    $co=$prov->buscarID($id);
+    $r=mysqli_fetch_array($co);
     
     include("../vista/proveedorModificar.php");
 
