@@ -12,7 +12,7 @@ class LoginCliente{
     public function verificarUsuario($mail){
 		include_once ("conexion.php");
 		$db = new Conexion();
-		$sql = $db->query("SELECT * FROM usuarios_clientes WHERE mail = '$mail'");
+		$sql = $db->query("SELECT COUNT(*) as num FROM usuarios_clientes WHERE mail = '$mail'");
 		return $sql;
 	}
 
@@ -20,7 +20,7 @@ class LoginCliente{
 		include_once ("conexion.php");
 		$db = new Conexion();
         $password = md5($password);
-		$sql = $db->query("SELECT * FROM usuarios_clientes WHERE password = '$password'");
+		$sql = $db->query("SELECT COUNT(*) as num FROM usuarios_clientes WHERE password = '$password'");
 		return $sql;
 	}
 

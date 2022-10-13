@@ -18,9 +18,11 @@ if (isset($_POST["iniciarSesion"])) {
     $password = $_POST['password'];
     $vcorreo = $login->verificarUsuario($correo);
     $vcontra = $login->verificarPassword($password);
-   
 
-    if ($vcorreo && $vcontra) {
+    $vcorreo = mysqli_fetch_array($vcorreo);
+    $vcontra = mysqli_fetch_array($vcontra);
+
+    if (($vcorreo['num'] > 0) && ($vcontra['num'] > 0)) {
         echo "".$correo;
         $datos = $login->obtenerDatos($correo, $password);
         $datosUsuario = mysqli_fetch_array($datos);
@@ -41,4 +43,4 @@ if (isset($_POST["iniciarSesion"])) {
     }
 
 }
-include_once("../vista/login.php");
+ include_once("../vista/login.php");

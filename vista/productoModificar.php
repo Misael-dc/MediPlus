@@ -51,6 +51,67 @@
         <label for="">Descripción:</label>
         <input class="form-control" type="text" name="descripcion" value="<?=$datoProducto['descripcion']?>">
     </div>
+
+    <div>
+        <label for="">Forma: </label>
+        <select name="forma" id="forma" class="form-control" value="<?=$datoProducto['forma']?>" >
+            <option value="Comprimidos">Comprimidos</option>
+            <option value="Via Oral">Via Oral</option>
+            <option value="Capsulas">Capsulas</option>
+            <option value="Inyeccion">Inyeccion</option>
+            <option value="Ungüento">Ungüento</option>
+            <option value="Gel">Gel</option>
+        </select>
+    </div><br>
+
+    <label for="">Peso: </label>
+    <div class="row form-group">
+        
+        <div class="col-2">
+            <input type="text" name="peso" class="form-control" value="<?=filter_var($datoProducto['peso'], FILTER_SANITIZE_NUMBER_INT)?>">
+        </div>
+        <div class="col-3">
+        <select name="pesoS" id="pesoS" class="form-control">
+            <option value="mg">mg</option>
+            <option value="mg/ml">mg/ml</option>
+            <option value="gr">gr</option>
+            <option value="ml">ml</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="">Laboratorio: </label>
+        <input type="text" name="lab" class="form-control" value="<?=$datoProducto['laboratorio']?>">
+    </div>
+
+    <div class="form-group">
+        <label for="">Fecha Vencimiento: </label>
+        <input type="date" name="fechaV" class="form-control" value="<?=date("Y-m-d",strtotime($datoProducto['fecha_vencimiento']))?>" >
+    </div>
+
+    <div class="form-group">
+        <label for="">Unidad de Venta</label>
+        <select name="unidadV" id="unidadV" class="form-control" value="<?=$datoProducto['unidad_venta']?>" >
+            <option value="tabletas">Tabletas</option>
+            <option value="capsulas">Capsulas</option>
+            <option value="ampollas">Ampollas</option>
+            <option value="frasco">Frasco</option>
+            <option value="lata">Lata</option>
+            <option value="sobre">Sobre</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="">Tipo de Envase: </label>
+        <select name="envase" id="envase" class="form-control" value="<?=$datoProducto['envase']?>" >
+            <option value="aluminio">Aluminio</option>
+            <option value="vidrio">Vidrio</option>
+            <option value="metalico">Metalico</option>
+            <option value="blister">Blister</option>
+            <option value="plastico">Plastico</option>
+        </select>
+    </div>
     
     <div class="form-group">
         <label for="">Costo Compra:</label>

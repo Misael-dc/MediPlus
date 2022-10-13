@@ -34,13 +34,13 @@ if(isset($_POST['modificar'])){
         $imagenNombre = $_FILES['imagen']['name'];
         $tmpImagen = $_FILES['imagen']['tmp_name'];
         
-        $producto = new Producto($id, $idClasificacion, $idProveedor, $nombre,$forma, $peso,$descripcion, $laboratorio, $costoCompra, $costoVenta, $stock, $fechaVencimietno, $unidad, $envase, $imagenNombre);
+        $producto = new Producto($id, $idClasificacion, $idProveedor, $nombre,$forma, $peso,$descripcion, $laboratorio, $costoCompra, $costoVenta, $stock, $fechaVencimiento, $unidad, $envase, $imagenNombre);
         $res = $producto->modificar();
         move_uploaded_file($tmpImagen, $ruta.$imagenNombre);
     }else{
-        $producto = new Producto($id, $idClasificacion, $idProveedor, $nombre,$forma, $peso,$descripcion, $laboratorio, $costoCompra, $costoVenta, $stock, $fechaVencimietno, $unidad, $envase, "");
+        $producto = new Producto($id, $idClasificacion, $idProveedor, $nombre,$forma, $peso,$descripcion, $laboratorio, $costoCompra, $costoVenta, $stock, $fechaVencimiento, $unidad, $envase, "");
         $res = $producto->modificar();
-        var_dump($imagenNombre);
+        
     }
 
    

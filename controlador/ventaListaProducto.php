@@ -7,20 +7,9 @@ $producto = new Producto("","","","","","","","","","","","","","","");
 $verificar = new Verificacion();
 
 
+$palabra = '';
+if (isset($_POST['buscar'])) $palabra = $_POST['palabra']; 
 
-if(isset($_POST['eliminar'])){
-    $producto->setIdProducto($_POST['id']);
-    $respuesta = $producto->eliminar();
-    if ($respuesta) {
-        echo "<script>  
-            alert('Eliminado...')
-            </script>";
-    }else {
-        echo "<script> 
-                alert('No se ha Eliminado...'); 
-            </script>";
-    }
-}
 
 if (!isset($_SESSION['carrito'])) {
     $_SESSION['carrito'] = array();     
@@ -41,7 +30,7 @@ if (isset($_POST['agregar'])) {
 }
 
 
-$respuesta = $producto->listar("");
+$respuesta = $producto->listar($palabra);
 
 
 include("../vista/ventaListaProducto.php");

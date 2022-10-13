@@ -18,6 +18,15 @@ class Verificacion{
             return 'No Inicio';
         }
 	}
+    public function verificarUsuarioAdmin(){
+
+        if (isset($_SESSION['id_rol'])) {
+            if ($_SESSION['id_rol'] == 1) {
+                return true;
+            }
+        }
+        return false;
+	}
     public function verificar(){
 
         if (isset($_SESSION['tipo_usuario'])) {
