@@ -20,7 +20,15 @@ class Cliente{
 	public function listar($palabra){
 		include_once ("conexion.php");
 		$db = new Conexion();
-		$sql = $db->query("SELECT * FROM clientes WHERE nombre like '$palabra%' AND estado = true");
+		$sql = $db->query("SELECT *, CONCAT(nombre,' ',paterno,' ',materno) as nombre_completo FROM clientes 
+							WHERE nombre like '$palabra%' AND estado = true");
+		return $sql;
+	}
+	public function listarClientes($palabra){
+		include_once ("conexion.php");
+		$db = new Conexion();
+		$sql = $db->query("SELECT * FROM clientes 
+							WHERE nombre like '$palabra%' AND estado = true");
 		return $sql;
 	}
 	public function listarClienteUsuario($idCliente){
@@ -57,7 +65,9 @@ class Cliente{
     public function modificar(){
 		include_once ("conexion.php");
 		$db = new Conexion();
-		$sql = $db->query("UPDATE clientes SET razon_social='$this->razonsocial', nit_ci='$this->nit' WHERE id_cliente='$this->idCliente'");
+		$sql = $db->query("UPDATE clientes SET nombre = '$this->nombre', paterno = '$this->paterno', 
+												materno = '$this->materno', ciudad = '$this->ciudad', cedula = '$this->nit' 
+							WHERE id_cliente='$this->idCliente'");
 		return $sql;
 	}
 }

@@ -75,6 +75,11 @@
 
                           <button type="submit" class="btn btn-primary btn-pill mb-4" name="iniciarSesion">Iniciar</button>
 
+                          <div class="text-dark mt-4 text-center" >
+                            <p>
+                              <a class="text-blue" href="login.php">Usuario Normal</a>
+                            </p>
+                          </div>
                           <!-- <p>¿ No estas registrado ?
                             <a class="text-blue" href="clienteUsuarioRegistrar.php">Registrarse</a>
                           </p> -->

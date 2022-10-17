@@ -13,7 +13,7 @@
         <tr>
           <th> Id </th>
           <th> Clasificación </th>
-          <td> PROVEEDOR </td>
+          <th> PROVEEDOR </th>
           <th> Nombre </th>
           <th> Forma</th>
           <th> Peso</th>
@@ -58,6 +58,7 @@
         <?php
           }
         ?>
+      </tbody>
     </table>
   </div>
 

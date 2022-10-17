@@ -113,6 +113,7 @@
                   }
               
                   if ($inicio == 'empleado') {?>
+                    <?php if ($verificar->verificarUsuarioAdmin()) {?>
                   <li  class="has-sub" >
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#cargo"
                       aria-expanded="false" aria-controls="charts">
@@ -134,6 +135,7 @@
                       </div>
                     </ul>
                   </li>
+                    <?php }?>
                   <li  class="has-sub" >
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#proveedor"
                       aria-expanded="false" aria-controls="charts">
@@ -155,6 +157,7 @@
                       </div>
                     </ul>
                   </li>
+                    <?php if ($verificar->verificarUsuarioAdmin()) {?>
                   <li  class="has-sub" >
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#empleado"
                       aria-expanded="false" aria-controls="charts">
@@ -176,6 +179,7 @@
                       </div>
                     </ul>
                   </li>
+                    <?php }?> 
                   <li  class="has-sub" >
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#producto"
                       aria-expanded="false" aria-controls="charts">
@@ -194,6 +198,23 @@
                                 <span class="nav-text">Registro Producto</span> 
                               </a>
                             </li>
+                      </div>
+                    </ul>
+                  </li>
+                  <li  class="has-sub" >
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#venta"
+                      aria-expanded="false" aria-controls="charts">
+                      <i class="mdi mdi-chart-pie"></i>
+                      <span class="nav-text">Venta</span> <b class="caret"></b>
+                    </a>
+                    <ul  class="collapse"  id="venta" data-parent="#sidebar-menu">
+                      <div class="sub-menu">                        
+                            <li >
+                              <a class="sidenav-item-link" href="ventaLista.php">
+                                <span class="nav-text">Lista Ventas</span> 
+                              </a>
+                            </li>
+
                       </div>
                     </ul>
                   </li>

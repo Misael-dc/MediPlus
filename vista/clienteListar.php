@@ -14,8 +14,9 @@ include_once("../vista/components/header.php");
         <tr>
 
           <th> ID </th>
-          <th> RAZON SOCIAL </th>
-          <th> NIT </th>
+          <th> NOMBRE </th>
+          <th> CIUDAD </th>
+          <th> CEDULA </th>
           <th> ACCIONES </th>
 
         </tr>
@@ -26,8 +27,9 @@ include_once("../vista/components/header.php");
           <tr>
 
             <td><?= $datos['id_cliente'] ?></td>
-            <td><?= $datos['razon_social'] ?></td>
-            <td><?= $datos['nit_ci'] ?></td>
+            <td><?= $datos['nombre_completo'] ?></td>
+            <td><?= $datos['ciudad'] ?></td>
+            <td><?= $datos['cedula'] ?></td>
             <td style="display: flex; justify-content: center;">
 
               <a type="button" class="btn btn-sm btn-outline-warning" href="clienteModificar.php?id=<?= $datos['id_cliente'] ?>">
@@ -44,7 +46,7 @@ include_once("../vista/components/header.php");
         <?php
         }
         ?>
-      </tbody>
+      
     </table>
   </div>
 

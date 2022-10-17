@@ -28,9 +28,10 @@
                 if (isset($_SESSION['carrito'])) {
                     $total = 0;
                     $lista = $_SESSION['carrito'];
+
                     foreach ($lista as $value) {
                         $id = $value['id'];
-                        $respuesta = $producto->listar("");
+                        $respuesta = $producto->obtenerProductoId($id);
                         
                         $reg = mysqli_fetch_array($respuesta);
                         // $subtotal = $value['cantidad'] * $reg['costo_venta'] ;
@@ -79,9 +80,25 @@
                         <input name="total" type="hidden" value="<?=$total?>">
                         <div class="col-auto">
                             <label for="" style="display: inline-block;">Cliente Nit:</label>
+     
+                            <?php if(isset($_SESSION['id_empleado'])){?>
 
-                            <input class="form-control" name="idCliente" style="display: inline-block; width: auto;" value="<?=$fila['id_cliente']?>" disabled>   
-                            <input type="hidden" name="idCliente" value="<?=$fila['id_cliente']?>" >   
+                            <select id="cedulas" name="idCliente" class="form-control"  style="display: inline-block; width: auto;">
+                            <?php
+                            $recepcion2 = $cliente->listar("");
+
+                            while ($reg = mysqli_fetch_array($recepcion2) ) {
+                            ?>
+                                <option value="<?php echo $reg['id_cliente'] ?>"><?= $reg['cedula'] ?></option>
+                            <?php
+                
+                            }
+                            ?>
+                            </select>
+                            <?php }else { ?>
+                                <input class="form-control" name="idCliente" style="display: inline-block; width: auto;" value="<?=$fila['cedula']?>" disabled>   
+                                <input type="hidden" name="idCliente" value="<?=$fila['id_cliente']?>" > 
+                            <?php }?>
                         </div>
                         <div class="col-auto">
                             <label for="">Total:</label>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-10-2022 a las 22:30:35
+-- Tiempo de generación: 17-10-2022 a las 22:30:11
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 7.4.27
 
@@ -41,7 +41,8 @@ INSERT INTO `cargos` (`id_cargo`, `cargo`) VALUES
 (3, 'Farmacéutico co-titular'),
 (4, 'Farmacéutico regente'),
 (5, 'Farmacéutico sustituto'),
-(6, 'Farmacéutico adjunto');
+(6, 'Farmacéutico adjunto'),
+(7, 'Farmacéutico Aprendiz');
 
 -- --------------------------------------------------------
 
@@ -91,13 +92,14 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id_cliente`, `nombre`, `paterno`, `materno`, `ciudad`, `cedula`, `estado`) VALUES
-(1, 'Dayana', 'Torres', 'Linares', NULL, '654', 1),
-(2, 'Ale', 'Quiroga', '', NULL, '654', 1),
-(3, 'uno', 'Sachez', '', NULL, '654', 1),
+(1, 'Dayana', 'Torres', 'Linares', 'El alto', '6545223', 1),
+(2, 'Ale', 'Quiroga', '', 'Villa Fatima', '654', 1),
+(3, 'uno', 'Sachez', '', 'Zona sur', '654', 1),
 (4, 'Delier', 'Zambrano', 'Dominguez', 'oruro', '1234', 1),
 (5, 'Danitza', 'Dom', 'Dest', 'La paz', '1456', 1),
 (20, 'nombre', 'Juares', 'Primero', 'oruro', '7854', 1),
-(23, 'Yesica', 'Lopez', 'lopez', 'oruro', '12345', 1);
+(23, 'Yesica', 'Lopez', 'lopez', 'oruro', '12345', 1),
+(24, 'Deniel', 'Gallardo', 'Linarez', 'Satelite', '78453123', 1);
 
 -- --------------------------------------------------------
 
@@ -149,7 +151,17 @@ INSERT INTO `detalle_ventas` (`id_venta`, `id_producto`, `cantidad`, `costo`) VA
 (28, 2, 1, '2.00'),
 (33, 1, 1, '1.00'),
 (33, 2, 1, '2.00'),
-(34, 1, 1, '1.00');
+(34, 1, 1, '1.00'),
+(37, 1, 1, '1.00'),
+(37, 3, 1, '2.00'),
+(37, 8, 6, '29.40'),
+(38, 4, 1, '0.45'),
+(38, 3, 1, '2.00'),
+(39, 1, 1, '1.00'),
+(39, 7, 1, '6.40'),
+(40, 8, 1, '4.90'),
+(40, 4, 3, '1.35'),
+(41, 5, 4, '35.20');
 
 -- --------------------------------------------------------
 
@@ -177,11 +189,12 @@ CREATE TABLE `empleados` (
 --
 
 INSERT INTO `empleados` (`id_empleado`, `ci`, `nombre`, `paterno`, `materno`, `id_cargo`, `direccion`, `telefono`, `fechanacimiento`, `genero`, `aficiones`, `estado`) VALUES
-(1, '85454', 'Yesica', 'Primero', 'suarez', 1, 'la paz', '785456', '1999-05-05', 'F', 'Lectura, Deportes', 1),
+(1, '1010101010101010', 'compu', 'compu', 'compu', 1, 'local', '0000000', '2022-09-30', 'M', 'Computadora', 1),
 (2, '8754531', 'Juan', 'Lopez', 'Perez', 1, 'oruro', '784512', '2022-09-28', 'M', 'Lectura', 1),
 (3, '8754531', 'Lupita', 'primero', 'lopez', 4, 'la paz', '784512', '2022-09-23', 'F', 'Lectura, Negocios, Deportes, Videojuegos', 1),
 (4, '8754531', 'juan', 'Lopez', 'lopez', 6, 'la paz', '7842312', '2022-09-23', 'M', 'Deportes, Videojuegos', 1),
-(5, '8754531', 'Javi', 'Lopez', 'lopez', 3, 'oruro', '78545', '2022-09-23', 'M', 'Negocios, Videojuegos', 1);
+(5, '8754531', 'Javi', 'Lopez', 'lopez', 3, 'oruro', '78545', '2022-09-23', 'M', 'Negocios, Videojuegos', 1),
+(8, '85454', 'Yesica', 'Primero', 'suarez', 1, 'la paz', '785456', '1999-05-05', 'F', 'Lectura, Deportes', 1);
 
 -- --------------------------------------------------------
 
@@ -213,13 +226,13 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_producto`, `id_clasificacion`, `id_proveedor`, `nombre_producto`, `descripcion`, `costo_compra`, `costo_venta`, `stock`, `forma`, `peso`, `laboratorio`, `fecha_vencimiento`, `unidad_venta`, `envase`, `imagenProducto`, `estado`) VALUES
-(1, 6, 1, 'Nodolex Forte 1000Mg Paracetamol X Tableta', 'Contra el dolor y la fiebre', '0.80', '1.00', 43, 'Comprimidos', '1000 mg', 'Bagó', '2030-12-15', 'tabletas', 'aluminio', 'images.jpg', 1),
+(1, 6, 1, 'Nodolex Forte 1000Mg Paracetamol X Tableta', 'Contra el dolor y la fiebre', '0.80', '1.00', 41, 'Comprimidos', '1000 mg', 'Bagó', '2030-12-15', 'tabletas', 'aluminio', 'images.jpg', 1),
 (2, 6, 4, 'Acetamol 100Mg Paracetamol Gotas X 15Ml', '', '1.50', '2.00', 48, 'Via oral', '100 mg/ml', 'Kern Farma', '2025-07-11 00:00:00', '2', 'vidrio', '220px-Ritalin-SR-20mg-full.jpg', 1),
-(3, 5, 4, 'Ibuprofeno 800Mg X Tableta', '', '1.50', '2.00', 142, 'Comprimido', '800 mg', 'Bagó', '2024-09-14 00:00:00', '2', 'aliminio', '220px-Ritalin-SR-20mg-full.jpg', 1),
-(4, 6, 1, 'Aspirinetas Acido Acetilsalicilico 100Mg X Tableta', 'Indicaciones terapeuticas: Prevencion cardiovascular. Analgesicos no narcoticos antipireticos.', '0.30', '0.45', 557, 'Comprimidos', '100 mg', 'Bayer', '2025-12-12', 'tabletas', 'aluminio', 'índice.jpg', 1),
-(5, 3, 3, 'Dolorsan Unguento X 15Gr', 'Mentol -salicilato de metilo - . Analgesico antiinflamatorio y antirreumatico topico. Alivio inmediato de la tos artritis bronquitis y muscular.', '8.00', '8.80', 60, 'Ungüento', '15 gr', 'Farcos', '2027-04-11 00:00:00', 'lata', 'metalico', 'dolorsan.jpg', 1),
-(7, 3, 2, 'Mentisan Unguento Grande X 15Gr', 'Mentol eucaliptol gomenol. Revulsivos percutaneos.', '5.50', '6.40', 100, 'Comprimidos', '15 mg', 'Inti S.A.', '2028-04-02', 'tabletas', 'aluminio', 'índice.jpg', 1),
-(8, 7, 2, 'Sanatusin Gel Dia Limon Miel X Sobre', 'Dextrometorfano bromhidrato 20mg-aminosidina sulfato 60mg-paracetamol 500mg', '4.00', '4.90', 150, 'Comprimidos', '15 mg', 'Pacific Pharma Group', '2023-07-12', 'tabletas', 'aluminio', 'images.jpg', 1),
+(3, 5, 4, 'Ibuprofeno 800Mg X Tableta', '', '1.50', '2.00', 140, 'Comprimido', '800 mg', 'Bagó', '2024-09-14 00:00:00', '2', 'aliminio', '220px-Ritalin-SR-20mg-full.jpg', 1),
+(4, 6, 1, 'Aspirinetas Acido Acetilsalicilico 100Mg X Tableta', 'Indicaciones terapeuticas: Prevencion cardiovascular. Analgesicos no narcoticos antipireticos.', '0.30', '0.45', 553, 'Comprimidos', '100 mg', 'Bayer', '2025-12-12', 'tabletas', 'aluminio', 'índice.jpg', 1),
+(5, 3, 3, 'Dolorsan Unguento X 15Gr', 'Mentol -salicilato de metilo - . Analgesico antiinflamatorio y antirreumatico topico. Alivio inmediato de la tos artritis bronquitis y muscular.', '8.00', '8.80', 56, 'Ungüento', '15 gr', 'Farcos', '2027-04-11 00:00:00', 'lata', 'metalico', 'dolorsan.jpg', 1),
+(7, 3, 2, 'Mentisan Unguento Grande X 15Gr', 'Mentol eucaliptol gomenol. Revulsivos percutaneos.', '5.50', '6.40', 99, 'Comprimidos', '15 mg', 'Inti S.A.', '2028-04-02', 'tabletas', 'aluminio', 'índice.jpg', 1),
+(8, 7, 2, 'Sanatusin Gel Dia Limon Miel X Sobre', 'Dextrometorfano bromhidrato 20mg-aminosidina sulfato 60mg-paracetamol 500mg', '4.00', '4.90', 143, 'Comprimidos', '15 mg', 'Pacific Pharma Group', '2023-07-12', 'tabletas', 'aluminio', 'images.jpg', 1),
 (13, 8, 6, 'Tosalcos Extra Fuerte Dextrometorfano X Sobre', 'Dextrometorfano bromhidrato.T os alcos extra fuerte dextrometorfano x sobre', '2.50', '3.20', 100, 'Via Oral', '15.6 gr', 'Alcos', '2025-04-01 00:00:00', 'sobre', 'blister', 'tosalcos.jpg', 1),
 (14, 9, 1, 'Complejo B Vimin Vitamina B1 B6 Y B12 Y Nicotinamida 50Mg X Ampolla', 'Vitamina b1 20mg-vitamina b6 b12 -nicotinamida 50mg. Vitaminas del complejo b + combinaciones', '6.00', '6.70', 120, 'Comprimidos', '20 mg', 'Inti S.A.', '2024-01-19', 'tabletas', 'aluminio', 'images.jpg', 1);
 
@@ -339,11 +352,16 @@ CREATE TABLE `venta` (
 --
 
 INSERT INTO `venta` (`id_venta`, `id_empleado`, `id_cliente`, `fecha`) VALUES
-(1, 1, 2, '2022-09-19'),
-(2, 1, 2, '2022-09-19'),
-(28, 1, 23, '2022-10-10'),
-(33, 1, 23, '2022-10-10'),
-(34, 1, 23, '2022-10-10');
+(1, 2, 2, '2022-09-19'),
+(2, 2, 2, '2022-09-19'),
+(28, 2, 23, '2022-10-10'),
+(33, 2, 23, '2022-10-10'),
+(34, 2, 23, '2022-10-10'),
+(37, 2, 23, '2022-10-14'),
+(38, 1, 20, '2022-10-17'),
+(39, 1, 24, '2022-10-17'),
+(40, 3, 1, '2022-10-17'),
+(41, 3, 20, '2022-10-17');
 
 --
 -- Índices para tablas volcadas
@@ -447,7 +465,7 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT de la tabla `cargos`
 --
 ALTER TABLE `cargos`
-  MODIFY `id_cargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_cargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `clasificacion`
@@ -459,13 +477,13 @@ ALTER TABLE `clasificacion`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `empleados`
 --
 ALTER TABLE `empleados`
-  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -501,7 +519,7 @@ ALTER TABLE `usuarios_empleados`
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Restricciones para tablas volcadas

@@ -13,6 +13,9 @@ if ( $tipoUsuario == 'No Inicio') {
 }
 
 $idEmpleado = 1;
+if (isset($_SESSION['id_empleado'])) {
+    $idEmpleado = $_SESSION['id_empleado'];
+}
 
 $idCliente = $_POST['idCliente'];
 $fecha = date('Y/m/d');

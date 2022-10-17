@@ -47,6 +47,7 @@ class Producto{
                             WHERE p.nombre_producto like '$palabra%' AND p.estado = true");
 		return $sql;
 	}
+
 	public function listaClasificacion(){
 		include_once ("conexion.php");
 		$db = new Conexion();
@@ -80,6 +81,13 @@ class Producto{
 		include_once ("conexion.php");
 		$db = new Conexion();
 		$sql = $db->query("SELECT * FROM producto WHERE id_producto = $this->idProducto");
+		return $sql;
+	}
+    
+	public function obtenerProductoId($id){
+		include_once ("conexion.php");
+		$db = new Conexion();
+		$sql = $db->query("SELECT * FROM producto WHERE id_producto = $id");
 		return $sql;
 	}
 	

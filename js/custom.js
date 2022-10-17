@@ -299,14 +299,43 @@ $(document).ready(function () {
   }
 
   /*======== 11. TOASTER ========*/
+  // var toaster = $("#toaster");
+  // function callToaster(positionClass) {
+  //   toastr.options = {
+  //     closeButton: true,
+  //     debug: false,
+  //     newestOnTop: false,
+  //     progressBar: true,
+  //     positionClass: positionClass,
+  //     preventDuplicates: false,
+  //     onclick: null,
+  //     showDuration: "300",
+  //     hideDuration: "1000",
+  //     timeOut: "5000",
+  //     extendedTimeOut: "1000",
+  //     showEasing: "swing",
+  //     hideEasing: "linear",
+  //     showMethod: "fadeIn",
+  //     hideMethod: "fadeOut",
+  //   };
+  //   toastr.success("Bienvenido a MediPlus+++ Dashboard", "Hola!");
+  // }
+
+  // if (toaster.length != 0) {
+  //   if (document.dir != "rtl") {
+  //     callToaster("toast-top-right");
+  //   } else {
+  //     callToaster("toast-top-left");
+  //   }
+  // }
   var toaster = $("#toaster");
-  function callToaster(positionClass) {
+  function callToaster() {
     toastr.options = {
       closeButton: true,
       debug: false,
       newestOnTop: false,
       progressBar: true,
-      positionClass: positionClass,
+      positionClass: "toast-top-right",
       preventDuplicates: false,
       onclick: null,
       showDuration: "300",
@@ -320,14 +349,14 @@ $(document).ready(function () {
     };
     toastr.success("Bienvenido a MediPlus+++ Dashboard", "Hola!");
   }
-
-  if (toaster.length != 0) {
-    if (document.dir != "rtl") {
-      callToaster("toast-top-right");
-    } else {
-      callToaster("toast-top-left");
-    }
-  }
+  
+  // if (toaster.length != 0) {
+  //   if (document.dir != "rtl") {
+  //     callToaster("toast-top-right");
+  //   } else {
+  //     callToaster("toast-top-left");
+  //   }
+  // }
 
   /*======== 12. INFO BAR ========*/
   var infoTeoaset = $(

@@ -5,10 +5,13 @@ $verificar = new Verificacion();
 
 if (isset($_POST['modificar'])) {
     $id = $_POST['id'];
-    $razon = $_POST['razon'];
-    $nit = $_POST['nit'];
+    $nombre = $_POST['nombre'];
+    $paterno = $_POST['paterno'];
+    $materno = $_POST['materno'];
+    $ciudad = $_POST['ciudad'];
+    $cedula = $_POST['cedula'];
 
-    $cliente = new Cliente($id, $razon, $nit,"","","");
+    $cliente = new Cliente($id, $nombre, $paterno, $materno, $ciudad, $cedula);
     $respuesta = $cliente->modificar();
     if ($respuesta) {
         echo "<script>  
@@ -22,7 +25,7 @@ if (isset($_POST['modificar'])) {
     }
 }else{
     $id = $_GET['id'];
-    $cliente = new Cliente($id, $razon, $nit,"","","");
+    $cliente = new Cliente($id,"", "","", "","");
     $resultado = $cliente->obtenerCliente();
     $datos = mysqli_fetch_array($resultado);
 }

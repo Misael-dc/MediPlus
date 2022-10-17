@@ -4,10 +4,13 @@ include_once("../modelo/Verificacion.php");
 $verificar = new Verificacion();
 
 if (isset($_POST['registrar'])) {
-    $razon = $_POST['razon'];
-    $nit = $_POST['nit'];
+    $nombre = $_POST['nombre'];
+    $paterno = $_POST['paterno'];
+    $materno = $_POST['materno'];
+    $ciudad = $_POST['ciudad'];
+    $cedula = $_POST['cedula'];
 
-    $cliente = new Cliente("", $razon, $nit,"","","");
+    $cliente = new Cliente("", $nombre, $paterno, $materno, $ciudad, $cedula);
     $respuesta = $cliente->registrar();
     if ($respuesta) {
         echo "<script>  

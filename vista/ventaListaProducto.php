@@ -75,7 +75,7 @@
                     <form action="ventaListaProducto.php" method="post">
                         <p class="card-text d-flex justify-content-between">
                             <strong>Cantidad: </strong> 
-                            <input class="form-control" type="number" name="cantidad"  value="1" min="1" max="<?php echo $reg['stock'] ?>" style="height: 25px; width: 60px; text-align:center" <?=$on_off?>>
+                            <input class="form-control" type="number" name="cantidad"  value="1" min="1" max="<?php echo $reg['stock'] ?>" style="height: 25px; width: 80px; text-align:center; padding-right: 5px" <?=$on_off?>>
                         </p>
                         <p>               
                             <input type="hidden" name="costoventa" value="<?=$reg['costo_venta']?>">

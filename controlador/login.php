@@ -30,12 +30,17 @@ if (isset($_POST["iniciarSesion"])) {
         $_SESSION['id_cliente'] = $datosUsuario['id_cliente'];
         $_SESSION['usuario'] = $datosUsuario['usuario'];
         $_SESSION['nombre_completo'] = $datosUsuario['nombre_completo'];
+        $nombreU = "Hola! ".$datosUsuario['nombre'];
         $_SESSION['tipo_usuario'] = 'cliente';
 
+        $_SESSION['mensaje_info'] = array('mensaje' => 'Bienvenido a Mediplus+++', 'titulo' => $nombreU, 'tipo' => 'info');
 
-        echo "<script>
-            location.href='ventaListaProducto.php'
-            </script>";
+        echo 
+            "  
+            <script>
+                location.href='ventaListaProducto.php'
+            </script>
+            ";
     }else {
         echo "<script> 
                 alert('Datos Incorrectos...'); 
@@ -43,4 +48,4 @@ if (isset($_POST["iniciarSesion"])) {
     }
 
 }
- include_once("../vista/login.php");
+include_once("../vista/login.php");

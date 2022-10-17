@@ -73,9 +73,24 @@
     <script src="../js/mono.js"></script>
     <script src="../js/chart.js"></script>
     <script src="../js/map.js"></script>
-    <script src="../js/custom.js"></script>
-  
-  
+    <script src='../js/custom.js'></script>
+    <script src='../js/mensaje.js' type="module"></script>
+    <script  type="module">
+
+      <?php 
+        if (isset($_SESSION['mensaje_info'])) {
+          $mensaje = $_SESSION['mensaje_info']['mensaje'];
+          $titulo = $_SESSION['mensaje_info']['titulo'];
+          $tipo = $_SESSION['mensaje_info']['tipo'];
+          unset($_SESSION['mensaje_info']);
+      ?>
+        import {callToaster} from '../js/mensaje.js';
+        callToaster('<?=$mensaje?>', '<?=$titulo?>', '<?=$tipo?>');
+      <?php    
+        }
+      ?>
+      
+    </script>
     </body>
   </html>
   

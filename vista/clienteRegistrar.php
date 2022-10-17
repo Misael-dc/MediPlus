@@ -8,12 +8,24 @@
   <div class="card-body">
     <form action="clienteRegistrar.php" method="POST">
       <div class="form-group">
-        <label for="exampleFormControlInput1">Razon Social</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Razon Social" name="razon">
+        <label for="exampleFormControlInput1">Nombre</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre" name="nombre">
       </div>
       <div class="form-group">
-        <label for="exampleFormControlPassword">Nit</label>
-        <input type="text" class="form-control" id="exampleFormControlPassword" placeholder="CI" name="nit">
+        <label for="exampleFormControlInput1">Paterno</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Paterno" name="paterno">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Materno</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Materno" name="materno">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Ciudad</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ciudad" name="ciudad">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlPassword">Cedula</label>
+        <input type="text" class="form-control" id="exampleFormControlPassword" placeholder="CI" name="cedula">
       </div>
     
       <div class="form-footer mt-6">

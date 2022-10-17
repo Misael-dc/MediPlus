@@ -7,7 +7,7 @@ include("../vista/components/header.php");
   </div>
   <div class="card-body">   
     <table id="productsTable" class="table table-hover table-product" style="width:100%">
-        <thead >
+        <thead>
             <tr>
                 <th> C. I. </th>
                 <th> NOMBRE COMPLETO </th>
@@ -34,7 +34,7 @@ include("../vista/components/header.php");
                 echo " <td>" . $fila['cargo'] . "</td>";
                 echo " <td>" . $fila['aficiones'] . "</td>";
             ?>
-            <td class="text-center">   
+            <td>   
                 <a href="modificarEmpleado.php?id=<?= $fila['id_empleado'] ?>" class="btn btn-sm btn-outline-warning"><i class="fa fa-pencil-square" aria-hidden="true">EDITAR </i> </a>
                 <a onclick="return confirm('Desea eliminar este registro?');" href="empleadoElimina.php?id=<?= $fila['id_empleado'] ?>" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"> ELIMINAR</i> </a>
             </td>

@@ -28,7 +28,7 @@ class LoginCliente{
 		include_once ("conexion.php");
 		$db = new Conexion();
         $password = md5($password);
-		$sql = $db->query("SELECT uc.id_usuario, uc.id_cliente, uc.mail, uc.usuario, CONCAT(c.nombre, ' ', ' ', c.paterno, ' ',c.materno) as nombre_completo FROM usuarios_clientes uc
+		$sql = $db->query("SELECT uc.id_usuario, uc.id_cliente, uc.mail, uc.usuario, CONCAT(c.nombre, ' ', ' ', c.paterno, ' ',c.materno) as nombre_completo, c.nombre FROM usuarios_clientes uc
 							INNER JOIN clientes c
 							ON uc.id_cliente = c.id_cliente
 							WHERE  mail = '$mail' AND password = '$password'");
