@@ -66,6 +66,7 @@
             <?php
                 }else{
                     $fila['id_cliente'] = '';
+                    $fila['cedula'] = '';
                     if (isset($_SESSION['id_cliente'])) {
                         $recepcion = $cliente->listarClienteUsuario($_SESSION['id_cliente']);
                         $fila = mysqli_fetch_array($recepcion); 
