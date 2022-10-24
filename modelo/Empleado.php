@@ -73,6 +73,11 @@ class Empleado{
         return $sql;
     }
 
+    public function __destruct()
+    {
+        echo "des";
+    }
+
 }
 
 

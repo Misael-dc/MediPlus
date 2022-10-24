@@ -36,7 +36,8 @@ include_once("components/header.php");
   </div>
 </div>
 
-
+<script src="plugins/prism/prism.js"></script>
+<script src="plugins/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>
 
 <?php
 include_once("components/footer.php");

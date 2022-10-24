@@ -6,6 +6,19 @@
             <h1>Historial de Productos Adquiridos</h1>
             <!-- <a href="reportedetalleventa.php" class="btn btn-outline-info fs-5">Reporte</a> -->
         </div>
+        <div class="card-header">
+            
+            <p> <strong>Vendedor: </strong> <?=$datosCli['completo_emp']?> </p>
+            <h4>Datos Cliente</h4>
+            <div class="border-top border-info rounded-lg" >
+                <p> <strong>Cliente: </strong> <?=$datosCli['completo_cli']?> </p>
+                <p> <strong>Cedula: </strong>  <?=$datosCli['cedula']?></p>
+                <p> <strong>Fecha: </strong>  <?=$datosCli['fecha']?></p>
+            </div>
+            
+            
+        
+        </div>
         <div class="card-body">
             <!-- <div class="mb-3 ms-3 me-3">
                 <form class="d-flex" action="listadetalleventa.php" method="post">
@@ -20,28 +33,32 @@
                     <th>Producto</th>
                     <th>Cantidad</th>
                     <th>Costo</th>
-                    <th>Total</th>
-                    <th>Fecha</th>
-                    
+                    <th>Sub Total</th>                    
                 </tr>
                 
                 <?php
 
-
+                $total = 0;   
                 while($reg = mysqli_fetch_array($respuesta)) {
-                    
+                    $total += ($reg['cantidad'] * $reg['costo']);
                 ?>
                 <tr>
                     <td><?php echo $reg['nombre_producto'] ?></td>    
                     <td><?php echo $reg['cantidad'] ?></td>    
                     <td><?php echo $reg['costo'] ?></td>    
-                    <td><?php echo $reg['cantidad'] * $reg['costo'] ?></td>    
-                    <td><?php echo $reg['fecha'] ?></td>       
+                    <td><?php echo $reg['cantidad'] * $reg['costo'] ?></td>        
                 </tr>
                 <?php
                     
                     }
                 ?> 
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Total: </td> 
+                        <td >Bs. <?=$total?> </td> 
+                    </tr>
+                </tfoot>
+
             </table>
         </div>
     </div>

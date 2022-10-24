@@ -6,6 +6,7 @@
             <h1>Historial de Ventas Realizadas</h1>
             <!-- <a href="reportedetalleventa.php" class="btn btn-outline-info fs-5">Reporte</a> -->
         </div>
+        
         <!-- <div class="mb-3 ms-3 me-3">
                 <form class="d-flex" action="listadetalleventa.php" method="post">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="palabra">
@@ -23,6 +24,7 @@
                         <th> EMPLEADO </th>
                         <th> CLIENTE </th>
                         <th> Fecha </th>                 
+                        <th> Detalles </th>                 
                     </tr>
                 </thead>
                 
@@ -37,7 +39,12 @@
                         <td><?= $reg['id_venta'] ?></td>    
                         <td><?= $reg['completo_emp'] ?></td>    
                         <td><?= $reg['completo_cli'] ?></td>     
-                        <td><?= $reg['fecha'] ?></td>       
+                        <td><?= $reg['fecha'] ?></td>   
+                        <td>
+                            <a type="button" class="btn btn-sm btn-outline-warning" href="ventaListaDetalleVenta.php?id=<?=$reg['id_venta']?>"> 
+                                <i class="mdi mdi-account-edit"></i>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
                 <?php

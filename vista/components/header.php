@@ -135,6 +135,27 @@
                       </div>
                     </ul>
                   </li>
+                  <li  class="has-sub" >
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#clasificacion"
+                      aria-expanded="false" aria-controls="charts">
+                      <i class="mdi mdi-chart-pie"></i>
+                      <span class="nav-text">Clasificación</span> <b class="caret"></b>
+                    </a>
+                    <ul  class="collapse"  id="clasificacion" data-parent="#sidebar-menu">
+                      <div class="sub-menu">                        
+                            <li >
+                              <a class="sidenav-item-link" href="clasificacionRegistrar.php">
+                                <span class="nav-text">Registrar Clasificación</span> 
+                              </a>
+                            </li>
+                            <li >
+                              <a class="sidenav-item-link" href="clasificacionLista.php">
+                                <span class="nav-text">Lista Clasificación</span> 
+                              </a>
+                            </li>
+                      </div>
+                    </ul>
+                  </li>
                     <?php }?>
                   <li  class="has-sub" >
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#proveedor"
@@ -277,13 +298,9 @@
                   </li>
                   <?php }?>
 
-                  
-                
-                
                   <li class="section-title">
                     Pages
-                  </li>
-                
+                  </li>   
                 
                   <li  class="has-sub" >
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#users"
