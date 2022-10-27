@@ -4,8 +4,9 @@ include_once("../vista/components/header.php");
 
 <div class="card card-default">
 
-  <div class="card-header ">
+  <div class="card-header d-flex justify-content-between align-items-center">
     <h1>Lista de Clientes</h1>
+    <a href="../vista/reportes/reportecliente.php" class="btn btn-outline-info fs-5">Reporte</a>
   </div>
 
   <div class="card-body">

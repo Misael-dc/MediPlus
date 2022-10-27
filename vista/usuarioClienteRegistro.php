@@ -11,13 +11,13 @@ include("../vista/components/header.php");
 
 
                     <div class="form-group">
-                        <label class="col-lg-2 control-label">Empleado:</label>
-                        <select name="idempleado" id="idempleado">
+                        <label class="col-lg-2 control-label">CLIENTE:</label>
+                        <select name="idcliente" id="idcliente">
                             <option value= "">Seleccione una opcion</option>
                             <?php
                             while ($t = mysqli_fetch_array($ca)) {
                             ?>
-                                <option value="<?php echo $t['id_empleado'] ?>"><?php echo $t['nombre'] ?></option>
+                                <option value="<?php echo $t['id_cliente'] ?>"><?php echo $t['razon_social'] ?></option>
                             <?php
                             }
                             ?>

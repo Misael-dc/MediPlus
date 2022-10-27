@@ -4,8 +4,9 @@
 
 
 <div class="card card-default">
-  <div class="card-header ">
+  <div class="card-header d-flex justify-content-between align-items-center">
     <h1>Lista de Productos</h1>
+    <a href="../vista/reportes/reporteproducto.php" class="btn btn-outline-info fs-5">Reporte</a> 
   </div>
   <div class="card-body">   
     <table id="productsTable" class="table table-hover table-product" style="width:100%">

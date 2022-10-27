@@ -136,6 +136,27 @@
                     </ul>
                   </li>
                   <li  class="has-sub" >
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#usemp"
+                      aria-expanded="false" aria-controls="charts">
+                      <i class="mdi mdi-chart-pie"></i>
+                      <span class="nav-text">Usuario Empleado</span> <b class="caret"></b>
+                    </a>
+                    <ul  class="collapse"  id="usemp" data-parent="#sidebar-menu">
+                      <div class="sub-menu">                        
+                            <li >
+                              <a class="sidenav-item-link" href="empleadoUsuarioRegistro.php">
+                                <span class="nav-text">Registrar usuario Empleado</span> 
+                              </a>
+                            </li>
+                            <li >
+                              <a class="sidenav-item-link" href="empleadoUsuarioLista.php">
+                                <span class="nav-text">Lista Usuarios Empleado</span> 
+                              </a>
+                            </li>
+                      </div>
+                    </ul>
+                  </li>
+                  <li  class="has-sub" >
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#clasificacion"
                       aria-expanded="false" aria-controls="charts">
                       <i class="mdi mdi-chart-pie"></i>

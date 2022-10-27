@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h1>Historial de Ventas Realizadas</h1>
-            <!-- <a href="reportedetalleventa.php" class="btn btn-outline-info fs-5">Reporte</a> -->
+            <a href="../vista/reportes/reporteVentas.php" class="btn btn-outline-info fs-5">Reporte</a> 
         </div>
         
         <!-- <div class="mb-3 ms-3 me-3">
